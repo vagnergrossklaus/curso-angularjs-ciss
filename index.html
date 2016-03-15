@@ -11,38 +11,40 @@
 <body ng-controller=FormCtrl>
 	<div class="container">
 		<div class="jumbotron">
+			<h1 ng-bind="Cadastro de tarefas">Cadastro de tarefas</h1>
 			<form id="form">
-			  	<div class="form-group col-xs-12 col-sm-6">
-				    <label for="name">Nome</label>
-				    <input type="text" class="form-control" ng-model="pessoa.name" id="name" placeholder="Digite seu nome">
-			  	</div>
-			  	<div class="form-group col-xs-12 col-sm-6">
-				    <label for="lastname">Sobrenome</label>
-				    <input type="text" class="form-control" ng-model="pessoa.lastname" id="lastname" placeholder="Digite seu sobrenome">
+				<div class="row">
+				  	<div class="form-group col-xs-12">
+					    <label for="task">Tarefa</label>
+					    <input type="text" class="form-control" ng-model="task" id="task">
+				  	</div>
+					<div class="col-xs-12">
+						<button type="submit" class="btn btn-primary pull-right" ng-click="cadastrarTarefa(task)">Cadastrar</button>
+					</div>
 				</div>
-				<div class="form-group col-xs-12 col-sm-6">
-				    <label for="age">Idade</label>
-				    <input type="number" class="form-control" ng-model="pessoa.age" id="age" placeholder="Digite sua idade">
-			  	</div>
-			  	<div class="form-group col-xs-12 col-sm-6">
-				    <label for="email">e-Mail</label>
-				    <input type="email" class="form-control" ng-model="pessoa.email" id="email" placeholder="Digite seu e-Mail">
-				</div>				
-				<div class="form-group col-xs-12 col-sm-6">
-				    <label for="phone">Telefone</label>
-				    <input type="text" class="form-control" ng-model="pessoa.phone" id="phone" placeholder="Digite seu telefone">
-				</div>		
-			</form>
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Informações</h2>
-					<p ng-if="pessoa.name">Nome: <strong ng-bind="pessoa.name"></strong></p>
-					<p ng-if="pessoa.lastname">Sobrenome: <strong ng-bind="pessoa.lastname"></strong></p>
-					<p ng-if="pessoa.age">Idade: <strong ng-bind="pessoa.age"></strong></p>
-					<p ng-if="pessoa.phone">Telefone: <strong ng-bind="pessoa.phone"></strong></p>
-					<p ng-if="pessoa.email">e-Mail: <strong ng-bind="pessoa.email"></strong></p>
+				<div class="row">
+					<div class="form-group col-xs-12">
+						<label for="search">Buscar</label>
+					    <input type="text" class="form-control" ng-model="search" id="search">
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>Tarefa</th>
+								<th>Data</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in list | filter:search">
+								<td><input type="checkbox"></input></td>
+								<td ng-bind="item.nomeTarefa"></td>
+								<td ng-bind="item.dataTarefa | date:'dd/MM/yyyy'"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</div>			
+			</form>		
 		</div>
 	</div>
 </body>
