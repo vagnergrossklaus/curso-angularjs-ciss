@@ -19,7 +19,7 @@
 					    <input type="text" class="form-control" ng-model="task" id="task">
 				  	</div>
 					<div class="col-xs-12">
-						<button type="submit" class="btn btn-primary pull-right" ng-click="cadastrarTarefa(task)">Cadastrar</button>
+						<button type="submit" class="btn btn-primary pull-right" ng-click="cadastrarTarefa(task)">Adicionar</button>
 					</div>
 				</div>
 				<div class="row">
@@ -33,6 +33,7 @@
 								<th>Check</th>
 								<th>Tarefa</th>
 								<th>Data</th>
+								<th>Opções</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -40,9 +41,27 @@
 								<td><input type="checkbox"></input></td>
 								<td ng-bind="item.nomeTarefa"></td>
 								<td ng-bind="item.dataTarefa | date:'dd/MM/yyyy'"></td>
+								<td>
+									<button class="btn btn-success" ng-click="editarTarefa($index)">
+										<i class="glyphicon glyphicon-pencil"></i>
+									</button>
+									<!--
+									<button class="btn btn-danger" ng-click="">
+										<i class="glyphicon glyphicon-trash"></i>
+									</button>
+									-->
+								</td>
 							</tr>
 						</tbody>
 					</table>
+					<div class="row" ng-show="clicouEditar">
+					  	<div class="form-group col-xs-8">
+						    <input type="text" class="form-control" ng-model="renomear">
+					  	</div>
+						<div class="col-xs-4">
+							<button type="submit" class="btn btn-primary pull-right" ng-click="renomearTarefa(renomear)">Renomear</button>
+						</div>
+					</div>
 				</div>
 			</form>		
 		</div>

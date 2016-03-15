@@ -1,6 +1,9 @@
 myApp.controller('FormCtrl', function($scope){
 	console.log('FormCtrl funcionando!');
 
+	$scope.indexTarefa = 0;
+	$scope.clicouEditar = false;
+
 	$scope.pessoa = {
 		name : 'Vagner',
 		lastname : 'Gross',
@@ -45,5 +48,30 @@ myApp.controller('FormCtrl', function($scope){
 		
 		$scope.task = undefined;
 	}
+
+	$scope.editarTarefa = function (data){
+		console.log(data);
+
+		$scope.indexTarefa = data;
+		$scope.renomear = $scope.list[$scope.indexTarefa].nomeTarefa;
+
+		$scope.clicouEditar = true;
+
+	}
+
+	$scope.renomearTarefa = function (data){
+
+		var editObj = {};
+		editObj = {
+			'nomeTarefa': data,
+			'dataTarefa': $scope.list[$scope.indexTarefa].dataTarefa
+		}
+
+		$scope.list[$scope.indexTarefa] = editObj;
+		$scope.renomear = undefined;
+		$scope.clicouEditar = false;
+
+	}
+
 
 });
