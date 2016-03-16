@@ -73,5 +73,14 @@ myApp.controller('FormCtrl', function($scope){
 
 	}
 
+	$scope.removerTarefa = function (data){
+		$scope.list.splice(data, 1);
+	}
+
+	$scope.cancelar = function (data){
+		$scope.indexTarefa = 0;
+		$scope.renomear = undefined;
+		$scope.clicouEditar = false;
+	}
 
 });
